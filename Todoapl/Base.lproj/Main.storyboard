@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,14 +15,118 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Todoapl" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M1C-EI-wCY">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <items>
+                                    <navigationItem title="メイン画面" id="eF1-rC-Fqc">
+                                        <barButtonItem key="rightBarButtonItem" title="追加" style="done" id="Ji2-3v-M0f">
+                                            <connections>
+                                                <segue destination="ycu-Sh-L16" kind="show" id="jhx-KY-EDI"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iNh-qO-JGM">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoCell" id="O37-EZ-82P">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="O37-EZ-82P" id="qNc-Xo-0eS">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="FUn-1y-ew9"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="w3M-Oz-FAp"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="M1C-EI-wCY" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="0NB-hM-aHI"/>
+                            <constraint firstItem="iNh-qO-JGM" firstAttribute="top" secondItem="M1C-EI-wCY" secondAttribute="bottom" id="0ta-kf-8NB"/>
+                            <constraint firstItem="M1C-EI-wCY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="GzM-AM-3na"/>
+                            <constraint firstItem="iNh-qO-JGM" firstAttribute="top" secondItem="M1C-EI-wCY" secondAttribute="bottom" id="LZ2-J3-MBS"/>
+                            <constraint firstItem="iNh-qO-JGM" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="VBr-U7-Oud"/>
+                            <constraint firstItem="iNh-qO-JGM" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Yye-p1-mdY"/>
+                            <constraint firstItem="iNh-qO-JGM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eyB-OT-T2j"/>
+                            <constraint firstItem="M1C-EI-wCY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="fob-qV-TN8"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="31.875" y="32.74647887323944"/>
+        </scene>
+        <!--Add Controller-->
+        <scene sceneID="GKo-4A-qWH">
+            <objects>
+                <viewController id="ycu-Sh-L16" customClass="AddController" customModule="Todoapl" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mXL-30-G06">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="po9-kz-fAf">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="oWc-3b-28d"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="追加画面" id="uFx-vz-1Hh">
+                                        <barButtonItem key="leftBarButtonItem" title="戻る" style="done" id="rXQ-Sr-HWA">
+                                            <connections>
+                                                <segue destination="BYZ-38-t0r" kind="show" id="lt8-9l-EUt"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M4H-wR-aVz">
+                                <rect key="frame" x="60.5" y="269" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="mRd-2C-YlF"/>
+                                    <constraint firstAttribute="width" constant="200" id="oVO-MT-ori"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9R-UU-Hbj">
+                                <rect key="frame" x="137" y="339" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="TodoAddButton:" destination="ycu-Sh-L16" eventType="touchUpInside" id="WUH-PR-qoK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="po9-kz-fAf" firstAttribute="top" secondItem="Zfg-f0-KHe" secondAttribute="top" id="2qL-af-9MB"/>
+                            <constraint firstItem="M4H-wR-aVz" firstAttribute="centerX" secondItem="mXL-30-G06" secondAttribute="centerX" id="BIG-YN-bSh"/>
+                            <constraint firstItem="po9-kz-fAf" firstAttribute="trailing" secondItem="Zfg-f0-KHe" secondAttribute="trailing" id="XDv-4k-XJu"/>
+                            <constraint firstItem="H9R-UU-Hbj" firstAttribute="centerX" secondItem="mXL-30-G06" secondAttribute="centerX" id="fYP-WW-m0r"/>
+                            <constraint firstItem="M4H-wR-aVz" firstAttribute="centerY" secondItem="mXL-30-G06" secondAttribute="centerY" id="ibm-AC-EQO"/>
+                            <constraint firstItem="H9R-UU-Hbj" firstAttribute="top" secondItem="M4H-wR-aVz" secondAttribute="bottom" constant="40" id="nlW-h0-tnC"/>
+                            <constraint firstItem="po9-kz-fAf" firstAttribute="leading" secondItem="Zfg-f0-KHe" secondAttribute="leading" id="rPY-fI-SoQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Zfg-f0-KHe"/>
+                    </view>
+                    <connections>
+                        <outlet property="TodoTextField" destination="M4H-wR-aVz" id="5pE-Qd-vFj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bd6-Gg-pDN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="799" y="33"/>
         </scene>
     </scenes>
 </document>
