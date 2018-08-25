@@ -160,6 +160,7 @@
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="TodoAddButton:" destination="ycu-Sh-L16" eventType="touchUpInside" id="WUH-PR-qoK"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="l54-Mp-e9B"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -185,6 +186,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="lt8-9l-EUt"/>
+        <segue reference="l54-Mp-e9B"/>
     </inferredMetricsTieBreakers>
 </document>
