@@ -62,10 +62,47 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <segue destination="cvE-e1-Is6" kind="show" identifier="MainToDetail" id="E4u-Ci-9HF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="31.875" y="32.74647887323944"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="nzF-aB-NvY">
+            <objects>
+                <viewController id="cvE-e1-Is6" customClass="DetailViewController" customModule="Todoapl" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FzW-zs-3Ao">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhg-Yz-1Fk">
+                                <rect key="frame" x="0.0" y="264" width="320" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="yUY-Ge-1qf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="nhg-Yz-1Fk" firstAttribute="leading" secondItem="Hk7-il-peb" secondAttribute="leading" id="MMx-U8-HQ5"/>
+                            <constraint firstItem="Hk7-il-peb" firstAttribute="trailing" secondItem="nhg-Yz-1Fk" secondAttribute="trailing" id="aL2-Cl-hiB"/>
+                            <constraint firstItem="nhg-Yz-1Fk" firstAttribute="centerY" secondItem="FzW-zs-3Ao" secondAttribute="centerY" id="vpm-iv-K7m"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Hk7-il-peb"/>
+                    </view>
+                    <connections>
+                        <outlet property="detailLabel" destination="nhg-Yz-1Fk" id="Oqp-Rf-wUv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WDR-Tw-SIN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="31.875" y="791.19718309859161"/>
         </scene>
         <!--Add Controller-->
         <scene sceneID="GKo-4A-qWH">

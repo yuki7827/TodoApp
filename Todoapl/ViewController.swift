@@ -20,7 +20,18 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         return TodoCell
     }
     
+    //セルをタップした際に画面遷移をする
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "MainToDetail", sender: indexPath)
+    }
     
+    //次のViewControllerに値を渡す
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detailVC = segue.destination as? DetailViewController,
+            let indexPath = sender as? IndexPath {
+            detailVC.detailMessage = TodoKobetsunonakami[indexPath.row]
+        }
+    }
     //最初からあるコード
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,4 +45,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    
 }
