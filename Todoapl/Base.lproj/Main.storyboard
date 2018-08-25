@@ -21,7 +21,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M1C-EI-wCY">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <items>
-                                    <navigationItem title="メイン画面" id="eF1-rC-Fqc">
+                                    <navigationItem title="一覧画面" id="eF1-rC-Fqc">
                                         <barButtonItem key="rightBarButtonItem" title="追加" style="done" id="Ji2-3v-M0f">
                                             <connections>
                                                 <segue destination="ycu-Sh-L16" kind="show" id="jhx-KY-EDI"/>
@@ -87,11 +87,29 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Xm-Mp-XOo">
+                                <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="BLO-cw-PDn"/>
+                                </constraints>
+                                <items>
+                                    <navigationItem title="詳細画面" id="BYq-rv-T77">
+                                        <barButtonItem key="leftBarButtonItem" title="戻る" style="done" id="T4r-nE-RfM">
+                                            <connections>
+                                                <segue destination="BYZ-38-t0r" kind="show" id="vaX-q0-36f"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="nhg-Yz-1Fk" firstAttribute="leading" secondItem="Hk7-il-peb" secondAttribute="leading" id="MMx-U8-HQ5"/>
+                            <constraint firstItem="3Xm-Mp-XOo" firstAttribute="leading" secondItem="Hk7-il-peb" secondAttribute="leading" id="ZkN-rG-qAH"/>
                             <constraint firstItem="Hk7-il-peb" firstAttribute="trailing" secondItem="nhg-Yz-1Fk" secondAttribute="trailing" id="aL2-Cl-hiB"/>
+                            <constraint firstItem="3Xm-Mp-XOo" firstAttribute="top" secondItem="Hk7-il-peb" secondAttribute="top" id="f4H-XT-Oak"/>
+                            <constraint firstItem="3Xm-Mp-XOo" firstAttribute="trailing" secondItem="Hk7-il-peb" secondAttribute="trailing" id="gl3-UP-gzU"/>
                             <constraint firstItem="nhg-Yz-1Fk" firstAttribute="centerY" secondItem="FzW-zs-3Ao" secondAttribute="centerY" id="vpm-iv-K7m"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Hk7-il-peb"/>
@@ -104,10 +122,10 @@
             </objects>
             <point key="canvasLocation" x="31.875" y="791.19718309859161"/>
         </scene>
-        <!--Add Controller-->
+        <!--Add View Controller-->
         <scene sceneID="GKo-4A-qWH">
             <objects>
-                <viewController id="ycu-Sh-L16" customClass="AddController" customModule="Todoapl" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ycu-Sh-L16" customClass="AddViewController" customModule="Todoapl" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mXL-30-G06">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -166,4 +184,7 @@
             <point key="canvasLocation" x="799" y="33"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="lt8-9l-EUt"/>
+    </inferredMetricsTieBreakers>
 </document>

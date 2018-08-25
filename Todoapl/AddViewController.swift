@@ -4,7 +4,7 @@ import UIKit
 //変数の設置
 var TodoKobetsunonakami = [String]()
 
-class AddController: UIViewController {
+class AddViewController: UIViewController {
     
     //テキストフィールドの設定
     @IBOutlet weak var TodoTextField: UITextField!

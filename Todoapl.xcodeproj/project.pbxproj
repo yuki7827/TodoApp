@@ -15,7 +15,7 @@
 		18C97E7C212DBFCE00934107 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18C97E7A212DBFCE00934107 /* LaunchScreen.storyboard */; };
 		18C97E87212DBFCE00934107 /* TodoaplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C97E86212DBFCE00934107 /* TodoaplTests.swift */; };
 		18C97E92212DBFCE00934107 /* TodoaplUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C97E91212DBFCE00934107 /* TodoaplUITests.swift */; };
-		18C97EA0212DCFB800934107 /* AddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C97E9F212DCFB800934107 /* AddController.swift */; };
+		18C97EA0212DCFB800934107 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C97E9F212DCFB800934107 /* AddViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +50,7 @@
 		18C97E8D212DBFCE00934107 /* TodoaplUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TodoaplUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		18C97E91212DBFCE00934107 /* TodoaplUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoaplUITests.swift; sourceTree = "<group>"; };
 		18C97E93212DBFCE00934107 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		18C97E9F212DCFB800934107 /* AddController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddController.swift; sourceTree = "<group>"; };
+		18C97E9F212DCFB800934107 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +101,7 @@
 		18C97E70212DBFC700934107 /* Todoapl */ = {
 			isa = PBXGroup;
 			children = (
-				18C97E9F212DCFB800934107 /* AddController.swift */,
+				18C97E9F212DCFB800934107 /* AddViewController.swift */,
 				18C97E71212DBFC700934107 /* AppDelegate.swift */,
 				18C97E73212DBFC700934107 /* ViewController.swift */,
 				18C97E75212DBFC700934107 /* Main.storyboard */,
@@ -262,7 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18C97EA0212DCFB800934107 /* AddController.swift in Sources */,
+				18C97EA0212DCFB800934107 /* AddViewController.swift in Sources */,
 				18C97E74212DBFC700934107 /* ViewController.swift in Sources */,
 				18C97E72212DBFC700934107 /* AppDelegate.swift in Sources */,
 				1887FD2C2131C0010043578B /* DetailViewController.swift in Sources */,
