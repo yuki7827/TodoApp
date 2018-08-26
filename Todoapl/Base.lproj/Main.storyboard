@@ -99,7 +99,7 @@
                                                 <segue destination="BYZ-38-t0r" kind="show" id="vaX-q0-36f"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="846-K5-GHf">
+                                        <barButtonItem key="rightBarButtonItem" style="done" id="846-K5-GHf">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Q3f-bO-nHJ">
                                                 <rect key="frame" x="273" y="7" width="31" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -199,6 +199,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="lt8-9l-EUt"/>
+        <segue reference="djs-Xp-rPh"/>
     </inferredMetricsTieBreakers>
 </document>
