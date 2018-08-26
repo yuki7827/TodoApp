@@ -14,6 +14,13 @@ class DetailViewController: UIViewController {
     var detailMessage: String?
     var index: Int? 
     
+    @IBAction func deleteButtonTapped(_ sender: Any) {
+        if let indexPath = index {
+            TodoKobetsunonakami.remove(at: indexPath)
+            //変数の中身をUDに追加
+            UserDefaults.standard.set( TodoKobetsunonakami, forKey: "TodoList" )
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,11 +34,7 @@ class DetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func deleteButtonTapped(sender: UIBarButtonItem) {
-        if let indexPath = index {
-            TodoKobetsunonakami.remove(at: indexPath)
-        }
-    }
+
     
 
     /*
