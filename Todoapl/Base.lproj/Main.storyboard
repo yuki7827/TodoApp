@@ -99,33 +99,30 @@
                                                 <segue destination="BYZ-38-t0r" kind="show" id="vaX-q0-36f"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="sd4-tS-rhT">
-                                            <connections>
-                                                <action selector="deleteButtonTapped:" destination="cvE-e1-Is6" id="hxv-2g-2U9"/>
-                                                <segue destination="BYZ-38-t0r" kind="show" id="j1W-kx-lAF"/>
-                                            </connections>
+                                        <barButtonItem key="rightBarButtonItem" style="done" id="846-K5-GHf">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Q3f-bO-nHJ">
+                                                <rect key="frame" x="273" y="7" width="31" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="削除">
+                                                    <color key="titleColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="deleteButtonTapped:" destination="cvE-e1-Is6" eventType="touchUpInside" id="uTz-v4-wRe"/>
+                                                    <segue destination="BYZ-38-t0r" kind="show" id="djs-Xp-rPh"/>
+                                                </connections>
+                                            </button>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3f-bO-nHJ">
-                                <rect key="frame" x="133" y="367" width="55" height="30"/>
-                                <state key="normal" title="DELETE"/>
-                                <connections>
-                                    <action selector="deleteButtonTapped:" destination="cvE-e1-Is6" eventType="touchUpInside" id="uTz-v4-wRe"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="djs-Xp-rPh"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Q3f-bO-nHJ" firstAttribute="centerX" secondItem="FzW-zs-3Ao" secondAttribute="centerX" id="A2A-gN-06Y"/>
                             <constraint firstItem="nhg-Yz-1Fk" firstAttribute="leading" secondItem="Hk7-il-peb" secondAttribute="leading" id="MMx-U8-HQ5"/>
                             <constraint firstItem="3Xm-Mp-XOo" firstAttribute="leading" secondItem="Hk7-il-peb" secondAttribute="leading" id="ZkN-rG-qAH"/>
                             <constraint firstItem="Hk7-il-peb" firstAttribute="trailing" secondItem="nhg-Yz-1Fk" secondAttribute="trailing" id="aL2-Cl-hiB"/>
                             <constraint firstItem="3Xm-Mp-XOo" firstAttribute="top" secondItem="Hk7-il-peb" secondAttribute="top" id="f4H-XT-Oak"/>
                             <constraint firstItem="3Xm-Mp-XOo" firstAttribute="trailing" secondItem="Hk7-il-peb" secondAttribute="trailing" id="gl3-UP-gzU"/>
-                            <constraint firstItem="Q3f-bO-nHJ" firstAttribute="top" secondItem="nhg-Yz-1Fk" secondAttribute="bottom" constant="63" id="tXu-xK-JJp"/>
                             <constraint firstItem="nhg-Yz-1Fk" firstAttribute="centerY" secondItem="FzW-zs-3Ao" secondAttribute="centerY" id="vpm-iv-K7m"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Hk7-il-peb"/>
@@ -172,8 +169,8 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9R-UU-Hbj">
-                                <rect key="frame" x="137" y="339" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                                <rect key="frame" x="145" y="339" width="31" height="30"/>
+                                <state key="normal" title="追加"/>
                                 <connections>
                                     <action selector="TodoAddButton:" destination="ycu-Sh-L16" eventType="touchUpInside" id="WUH-PR-qoK"/>
                                 </connections>
