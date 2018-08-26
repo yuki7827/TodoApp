@@ -161,7 +161,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M4H-wR-aVz">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M4H-wR-aVz">
                                 <rect key="frame" x="60.5" y="269" width="200" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="mRd-2C-YlF"/>
@@ -176,15 +176,26 @@
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="TodoAddButton:" destination="ycu-Sh-L16" eventType="touchUpInside" id="WUH-PR-qoK"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="l54-Mp-e9B"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gX9-WU-f8C">
+                                <rect key="frame" x="0.0" y="177" width="320" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="PEY-CR-rss"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="po9-kz-fAf" firstAttribute="top" secondItem="Zfg-f0-KHe" secondAttribute="top" id="2qL-af-9MB"/>
+                            <constraint firstItem="gX9-WU-f8C" firstAttribute="trailing" secondItem="Zfg-f0-KHe" secondAttribute="trailing" id="2tv-Oo-VxR"/>
                             <constraint firstItem="M4H-wR-aVz" firstAttribute="centerX" secondItem="mXL-30-G06" secondAttribute="centerX" id="BIG-YN-bSh"/>
+                            <constraint firstItem="gX9-WU-f8C" firstAttribute="leading" secondItem="Zfg-f0-KHe" secondAttribute="leading" id="THO-Jj-FJB"/>
                             <constraint firstItem="po9-kz-fAf" firstAttribute="trailing" secondItem="Zfg-f0-KHe" secondAttribute="trailing" id="XDv-4k-XJu"/>
+                            <constraint firstItem="M4H-wR-aVz" firstAttribute="top" secondItem="gX9-WU-f8C" secondAttribute="bottom" constant="71" id="bwi-VB-Smc"/>
                             <constraint firstItem="H9R-UU-Hbj" firstAttribute="centerX" secondItem="mXL-30-G06" secondAttribute="centerX" id="fYP-WW-m0r"/>
                             <constraint firstItem="M4H-wR-aVz" firstAttribute="centerY" secondItem="mXL-30-G06" secondAttribute="centerY" id="ibm-AC-EQO"/>
                             <constraint firstItem="H9R-UU-Hbj" firstAttribute="top" secondItem="M4H-wR-aVz" secondAttribute="bottom" constant="40" id="nlW-h0-tnC"/>
@@ -194,14 +205,16 @@
                     </view>
                     <connections>
                         <outlet property="TodoTextField" destination="M4H-wR-aVz" id="5pE-Qd-vFj"/>
+                        <outlet property="errorLabel" destination="gX9-WU-f8C" id="ahX-Pj-X0E"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="addToMain" id="jox-Bi-H9t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bd6-Gg-pDN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="799" y="33"/>
+            <point key="canvasLocation" x="798.75" y="32.74647887323944"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="vaX-q0-36f"/>
+        <segue reference="jox-Bi-H9t"/>
     </inferredMetricsTieBreakers>
 </document>
