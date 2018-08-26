@@ -99,6 +99,11 @@
                                                 <segue destination="BYZ-38-t0r" kind="show" id="vaX-q0-36f"/>
                                             </connections>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="sd4-tS-rhT">
+                                            <connections>
+                                                <segue destination="BYZ-38-t0r" kind="show" id="j1W-kx-lAF"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -186,6 +191,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="l54-Mp-e9B"/>
+        <segue reference="vaX-q0-36f"/>
     </inferredMetricsTieBreakers>
 </document>

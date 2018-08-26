@@ -30,6 +30,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         if let detailVC = segue.destination as? DetailViewController,
             let indexPath = sender as? IndexPath {
             detailVC.detailMessage = TodoKobetsunonakami[indexPath.row]
+            detailVC.index = indexPath.row
         }
     }
     //最初からあるコード

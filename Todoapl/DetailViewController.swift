@@ -12,17 +12,25 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var detailLabel: UILabel!
     var detailMessage: String?
-
+    var index: Int? 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         detailLabel.text = detailMessage
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func deleteButtonTapped(sender: UIBarButtonItem) {
+        if let indexPath = index {
+            TodoKobetsunonakami.remove(at: indexPath)
+        }
     }
     
 
