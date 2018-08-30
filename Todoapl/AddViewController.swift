@@ -1,8 +1,12 @@
 //  AddController.swift
 import UIKit
 
-//変数の設置
+//タイトル
 var TodoKobetsunonakami = [String]()
+//メモ
+var memo = [String]()
+//日時
+var datetime = [Date]()
 
 class AddViewController: UIViewController {
     
@@ -22,10 +26,14 @@ class AddViewController: UIViewController {
         }
         //変数に入力内容を入れる
         TodoKobetsunonakami.append(TodoTextField.text!)
+        memo.append("")
+        datetime.append(Date())
         //追加ボタンを押したらフィールドを空にする
         TodoTextField.text = ""
         //変数の中身をUDに追加
         UserDefaults.standard.set( TodoKobetsunonakami, forKey: "TodoList" )
+        UserDefaults.standard.set( memo, forKey: "MemoList" )
+        UserDefaults.standard.set( datetime, forKey: "DateTimeList" )
         //追加画面に遷移
         self.performSegue(withIdentifier: "addToMain", sender: nil)
     }

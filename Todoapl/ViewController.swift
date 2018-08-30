@@ -30,15 +30,18 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         if let detailVC = segue.destination as? DetailViewController,
             let indexPath = sender as? IndexPath {
             detailVC.detailMessage = TodoKobetsunonakami[indexPath.row]
+            detailVC.detailMemo = memo[indexPath.row]
+            detailVC.detailDateTime = datetime[indexPath.row]
             detailVC.index = indexPath.row
         }
     }
     //最初からあるコード
     override func viewDidLoad() {
-        super.viewDidLoad()
         //追加画面で入力した内容を取得する
         if UserDefaults.standard.object(forKey: "TodoList") != nil {
             TodoKobetsunonakami = UserDefaults.standard.object(forKey: "TodoList") as! [String]
+            memo = UserDefaults.standard.object(forKey: "MemoList") as! [String]
+            datetime = UserDefaults.standard.object(forKey: "DateTimeList") as! [Date]
         }
     }
     
