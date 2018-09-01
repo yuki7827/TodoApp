@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0F8D4F04BA591CCB54ABD947 /* Pods_Todoapl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B46A5533717CACBDCFE52970 /* Pods_Todoapl.framework */; };
+		185B2793213AC1420057CBC4 /* file-two-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 185B2792213AC1410057CBC4 /* file-two-7.png */; };
+		185B2795213AC1B90057CBC4 /* calendar-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 185B2794213AC1B80057CBC4 /* calendar-7.png */; };
 		1887FD2C2131C0010043578B /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887FD2B2131C0010043578B /* DetailViewController.swift */; };
 		18C97E72212DBFC700934107 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C97E71212DBFC700934107 /* AppDelegate.swift */; };
 		18C97E74212DBFC700934107 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C97E73212DBFC700934107 /* ViewController.swift */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		185B2792213AC1410057CBC4 /* file-two-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file-two-7.png"; sourceTree = "<group>"; };
+		185B2794213AC1B80057CBC4 /* calendar-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar-7.png"; sourceTree = "<group>"; };
 		1887FD2B2131C0010043578B /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		18C97E6E212DBFC700934107 /* Todoapl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todoapl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18C97E71212DBFC700934107 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +120,8 @@
 				18C97E78212DBFCE00934107 /* Assets.xcassets */,
 				18C97E7A212DBFCE00934107 /* LaunchScreen.storyboard */,
 				18C97E7D212DBFCE00934107 /* Info.plist */,
+				185B2792213AC1410057CBC4 /* file-two-7.png */,
+				185B2794213AC1B80057CBC4 /* calendar-7.png */,
 			);
 			path = Todoapl;
 			sourceTree = "<group>";
@@ -261,9 +267,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				185B2793213AC1420057CBC4 /* file-two-7.png in Resources */,
 				18C97E7C212DBFCE00934107 /* LaunchScreen.storyboard in Resources */,
 				18C97E79212DBFCE00934107 /* Assets.xcassets in Resources */,
 				18C97E77212DBFC700934107 /* Main.storyboard in Resources */,
+				185B2795213AC1B90057CBC4 /* calendar-7.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,15 +297,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Todoapl/Pods-Todoapl-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 			);
@@ -311,15 +315,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Todoapl-checkManifestLockResult.txt",
 			);

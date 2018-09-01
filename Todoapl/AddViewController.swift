@@ -39,10 +39,10 @@ class AddViewController: UIViewController {
         //追加ボタンを押したらフィールドを空にする
         TodoTextField.text = ""
         //変数の中身をUDに追加
-        UserDefaults.standard.set( todoList, forKey: "TodoList" )
+        UserDefaults.standard.set( todoList, forKey: "todoList" )
         //        UserDefaults.standard.set( memo, forKey: "MemoList" )
         //        UserDefaults.standard.set( datetime, forKey: "DateTimeList" )
-        //追加画面に遷移
+        //一覧画面に遷移
         self.performSegue(withIdentifier: "addToMain", sender: nil)
     }
     
