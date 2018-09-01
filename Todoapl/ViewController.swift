@@ -1,9 +1,12 @@
 //  ViewController.swift
 import UIKit
+import UserNotifications
 
 //classの継承を追加
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
+    
+    @IBOutlet weak var tableView: UITableView!
     //UITableView、numberOfRowsInSectionの追加(表示するcell数を決める)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //戻り値の設定(表示するcell数)
@@ -43,6 +46,34 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             memo = UserDefaults.standard.object(forKey: "MemoList") as! [String]
             datetime = UserDefaults.standard.object(forKey: "DateTimeList") as! [Date]
         }
+        // 通知許可ダイアログを表示
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound, .badge]) {
+            (granted, error) in
+            // エラー処理
+        }
+        
+        // 通知内容の設定
+        let content = UNMutableNotificationContent()
+        
+        content.title = NSString.localizedUserNotificationString(forKey: "Title", arguments: nil)
+        content.body = NSString.localizedUserNotificationString(forKey: "Message", arguments: nil)
+        content.sound = UNNotificationSound.default()
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: " Identifier", content: content, trigger: trigger)
+        
+        // 通知を登録
+        center.add(request) { (error : Error?) in
+            if error != nil {
+                // エラー処理
+            }
+        }
+        
+        self.navigationController?.isNavigationBarHidden = false
+        navigationItem.title = "一覧画面"
+        navigationItem.rightBarButtonItem = editButtonItem
     }
     
     //最初からあるコード
@@ -50,5 +81,24 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         super.didReceiveMemoryWarning()
     }
     
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        //override前の処理を継続してさせる
+        super.setEditing(editing, animated: animated)
+        //tableViewの編集モードを切り替える
+        tableView.isEditing = editing //editingはBool型でeditButtonに依存する変数
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        //dataを消してから
+        TodoKobetsunonakami.remove(at: indexPath.row)
+        memo.remove(at: indexPath.row)
+        datetime.remove(at: indexPath.row)
+        UserDefaults.standard.set( TodoKobetsunonakami, forKey: "TodoList" )
+        UserDefaults.standard.set( memo, forKey: "memoList" )
+        UserDefaults.standard.set( datetime, forKey: "dateTimeList" )
+
+        //tableViewCellの削除
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
     
 }

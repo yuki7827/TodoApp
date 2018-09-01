@@ -55,6 +55,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="tableView" destination="iNh-qO-JGM" id="i43-J5-myv"/>
                         <segue destination="cvE-e1-Is6" kind="show" identifier="MainToDetail" id="E4u-Ci-9HF"/>
                     </connections>
                 </viewController>
