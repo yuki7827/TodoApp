@@ -10,7 +10,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     //UITableView、numberOfRowsInSectionの追加(表示するcell数を決める)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //戻り値の設定(表示するcell数)
-        return TodoKobetsunonakami.count
+        return todoList.count
+        
     }
     
     //UITableView、cellForRowAtの追加(表示するcellの中身を決める)
@@ -18,7 +19,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         //変数を作る
         let TodoCell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "TodoCell", for: indexPath)
         //変数の中身を作る
-        TodoCell.textLabel!.text = TodoKobetsunonakami[indexPath.row]
+        TodoCell.textLabel!.text = todoList[indexPath.row]["title"] as? String
+        
         //戻り値の設定（表示する中身)
         return TodoCell
     }
@@ -32,19 +34,22 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let detailVC = segue.destination as? DetailViewController,
             let indexPath = sender as? IndexPath {
-            detailVC.detailMessage = TodoKobetsunonakami[indexPath.row]
-            detailVC.detailMemo = memo[indexPath.row]
-            detailVC.detailDateTime = datetime[indexPath.row]
+            //            detailVC.detailMessage = TodoKobetsunonakami[indexPath.row]
+            //            detailVC.detailMemo = memo[indexPath.row]
+            //            detailVC.detailDateTime = datetime[indexPath.row]
+            detailVC.detailTodo = todoList[indexPath.row]
+            
             detailVC.index = indexPath.row
         }
     }
     //最初からあるコード
     override func viewDidLoad() {
         //追加画面で入力した内容を取得する
-        if UserDefaults.standard.object(forKey: "TodoList") != nil {
-            TodoKobetsunonakami = UserDefaults.standard.object(forKey: "TodoList") as! [String]
-            memo = UserDefaults.standard.object(forKey: "MemoList") as! [String]
-            datetime = UserDefaults.standard.object(forKey: "DateTimeList") as! [Date]
+        if UserDefaults.standard.object(forKey: "todoList") != nil {
+            //            TodoKobetsunonakami = UserDefaults.standard.object(forKey: "TodoList") as! [String]
+            //            memo = UserDefaults.standard.object(forKey: "MemoList") as! [String]
+            //            datetime = UserDefaults.standard.object(forKey: "DateTimeList") as! [Date]
+            todoList = UserDefaults.standard.object(forKey: "todoList") as! [[String:Any]]
         }
         // 通知許可ダイアログを表示
         let center = UNUserNotificationCenter.current()
@@ -73,7 +78,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         self.navigationController?.isNavigationBarHidden = false
         navigationItem.title = "一覧画面"
-        navigationItem.rightBarButtonItem = editButtonItem
+        navigationItem.leftBarButtonItem = editButtonItem
     }
     
     //最初からあるコード
@@ -90,13 +95,16 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         //dataを消してから
-        TodoKobetsunonakami.remove(at: indexPath.row)
-        memo.remove(at: indexPath.row)
-        datetime.remove(at: indexPath.row)
-        UserDefaults.standard.set( TodoKobetsunonakami, forKey: "TodoList" )
-        UserDefaults.standard.set( memo, forKey: "memoList" )
-        UserDefaults.standard.set( datetime, forKey: "dateTimeList" )
-
+        //        TodoKobetsunonakami.remove(at: indexPath.row)
+        //        memo.remove(at: indexPath.row)
+        //        datetime.remove(at: indexPath.row)
+        todoList.remove(at: indexPath.row)
+        //        UserDefaults.standard.set( TodoKobetsunonakami, forKey: "TodoList" )
+        //        UserDefaults.standard.set( memo, forKey: "memoList" )
+        //        UserDefaults.standard.set( datetime, forKey: "dateTimeList" )
+        UserDefaults.standard.set( todoList, forKey: "todoList" )
+        
+        
         //tableViewCellの削除
         tableView.deleteRows(at: [indexPath], with: .automatic)
     }

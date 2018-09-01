@@ -12,9 +12,10 @@ import Eureka
 class DetailViewController: FormViewController {
     
 //    @IBOutlet weak var detailLabel: UILabel!
-    var detailMessage: String?
-    var detailMemo: String?
-    var detailDateTime: Date?
+//    var detailMessage: String?
+//    var detailMemo: String?
+//    var detailDateTime: Date?
+    var detailTodo: [String:Any]?
     var index: Int?
 //
 //    @IBAction func deleteButtonTapped(_ sender: Any) {
@@ -33,16 +34,18 @@ class DetailViewController: FormViewController {
             <<< TextRow {row in
                 row.title = "タイトル"
                 row.placeholder = "タイトルを入力してください"
-                row.value = detailMessage
+                row.value = detailTodo?["title"] as? String
                 }.onChange { row in
                     let value = row.value
                     print(value!)
                     //変数に入力内容を入れる
                     if let index = self.index,
                     let rowValue = value {
-                        TodoKobetsunonakami[index] = rowValue
+                        todoList[index]["title"] = rowValue
+                        
                         //変数の中身をUDに追加
-                        UserDefaults.standard.set( TodoKobetsunonakami, forKey: "TodoList" )
+                        UserDefaults.standard.set( todoList, forKey: "todoList" )
+                        
                     }
 
 
@@ -50,16 +53,16 @@ class DetailViewController: FormViewController {
                 }
             <<< TextAreaRow {row in
                 row.placeholder = "メモを入力"
-                row.value = detailMemo
+                row.value = detailTodo?["memo"] as? String
                 }.onChange { row in
                     let value = row.value
                     print(value!)
                     //変数に入力内容を入れる
                     if let index = self.index,
                         let rowValue = value {
-                        memo[index] = rowValue
+                        todoList[index]["memo"] = rowValue
                         //変数の中身をUDに追加
-                        UserDefaults.standard.set( memo, forKey: "MemoList" )
+                        UserDefaults.standard.set( todoList, forKey: "todoList" )
                     }
             }
 //            // ここからセクション2のコード
@@ -72,16 +75,16 @@ class DetailViewController: FormViewController {
 //            +++ Section("セクション4")
             <<< DateTimeRow("") {
                 $0.title = "期限"
-                $0.value = detailDateTime
+                $0.value = detailTodo?["dateTime"] as? Date
                 }.onChange { row in
                     let value = row.value
                     print(value!)
                     //変数に入力内容を入れる
                     if let index = self.index,
                         let rowValue = value {
-                        datetime[index] = rowValue
+                        todoList[index]["dateTime"] = rowValue
                         //変数の中身をUDに追加
-                        UserDefaults.standard.set( datetime, forKey: "DateTimeList" )
+                        UserDefaults.standard.set( todoList, forKey: "todoList" )
                     }
         }
         

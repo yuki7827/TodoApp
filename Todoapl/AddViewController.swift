@@ -2,11 +2,15 @@
 import UIKit
 
 //タイトル
-var TodoKobetsunonakami = [String]()
+//var TodoKobetsunonakami = [String]()
 //メモ
-var memo = [String]()
+//var memo = [String]()
 //日時
-var datetime = [Date]()
+//var datetime = [Date]()
+
+//Todoの配列
+var todo =  ["title":"", "memo":"", "dateTime": Date()] as [String : Any]
+var todoList = [[String:Any]]()
 
 class AddViewController: UIViewController {
     
@@ -25,15 +29,19 @@ class AddViewController: UIViewController {
             return
         }
         //変数に入力内容を入れる
-        TodoKobetsunonakami.append(TodoTextField.text!)
-        memo.append("")
-        datetime.append(Date())
+        //        TodoKobetsunonakami.append(TodoTextField.text!)
+        //        memo.append("")
+        //        datetime.append(Date())
+        todo.updateValue(TodoTextField.text!, forKey: "title")
+        todo.updateValue("", forKey: "memo")
+        todo.updateValue(Date(), forKey: "dateTime")
+        todoList.append(todo)
         //追加ボタンを押したらフィールドを空にする
         TodoTextField.text = ""
         //変数の中身をUDに追加
-        UserDefaults.standard.set( TodoKobetsunonakami, forKey: "TodoList" )
-        UserDefaults.standard.set( memo, forKey: "MemoList" )
-        UserDefaults.standard.set( datetime, forKey: "DateTimeList" )
+        UserDefaults.standard.set( todoList, forKey: "TodoList" )
+        //        UserDefaults.standard.set( memo, forKey: "MemoList" )
+        //        UserDefaults.standard.set( datetime, forKey: "DateTimeList" )
         //追加画面に遷移
         self.performSegue(withIdentifier: "addToMain", sender: nil)
     }
