@@ -37,7 +37,9 @@ class DetailViewController: FormViewController {
                 row.value = detailTodo?["title"] as? String
                 }.onChange { row in
                     let value = row.value
-                    print(value!)
+                    if let printValue = value {
+                        print(printValue)
+                    }
                     //変数に入力内容を入れる
                     if let index = self.index,
                     let rowValue = value {
@@ -56,7 +58,10 @@ class DetailViewController: FormViewController {
                 row.value = detailTodo?["memo"] as? String
                 }.onChange { row in
                     let value = row.value
-                    print(value!)
+                    if let printValue = value {
+                        print(printValue)
+                    }
+                    
                     //変数に入力内容を入れる
                     if let index = self.index,
                         let rowValue = value {
