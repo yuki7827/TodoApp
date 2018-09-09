@@ -4,6 +4,7 @@ import UserNotifications
 
 //classの継承を追加
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+    static let center = UNUserNotificationCenter.current()
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -52,8 +53,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             todoList = UserDefaults.standard.object(forKey: "todoList") as! [[String:Any]]
         }
         // 通知許可ダイアログを表示
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options: [.alert, .sound, .badge]) {
+        ViewController.center.requestAuthorization(options: [.alert, .sound, .badge]) {
             (granted, error) in
             // エラー処理
         }
@@ -70,7 +70,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         let request = UNNotificationRequest(identifier: " Identifier", content: content, trigger: trigger)
         
         // 通知を登録
-        center.add(request) { (error : Error?) in
+        ViewController.center.add(request) { (error : Error?) in
             if error != nil {
                 // エラー処理
             }

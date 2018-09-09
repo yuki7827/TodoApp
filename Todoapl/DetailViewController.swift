@@ -8,6 +8,8 @@
 
 import UIKit
 import Eureka
+import UserNotifications
+
 
 class DetailViewController: FormViewController {
     
@@ -90,6 +92,27 @@ class DetailViewController: FormViewController {
                         todoList[index]["dateTime"] = rowValue
                         //変数の中身をUDに追加
                         UserDefaults.standard.set( todoList, forKey: "todoList" )
+                    }
+                    // 通知内容の設定
+                    let content = UNMutableNotificationContent()
+                    
+                    content.title = NSString.localizedUserNotificationString(forKey: self.detailTodo!["title"] as! String, arguments: nil)
+                    content.body = NSString.localizedUserNotificationString(forKey: self.detailTodo!["memo"] as! String, arguments: nil)
+                    content.sound = UNNotificationSound.default()
+                    
+                    let date = Calendar.current.dateComponents([.calendar, .year, .month, .day, .hour, .minute], from: value!)
+
+                    //let date = DateComponents(month:9, day:10, hour:0, minute:51)
+                    //let date = Calendar.current.dateComponents(in: TimeZone.current, from: value!)
+                    let trigger = UNCalendarNotificationTrigger.init(dateMatching: date, repeats: false)
+
+                    let request = UNNotificationRequest(identifier: self.detailTodo!["title"] as! String, content: content, trigger: trigger)
+                    
+                    // 通知を登録
+                    ViewController.center.add(request) { (error : Error?) in
+                        if error != nil {
+                            print("erroe")
+                        }
                     }
         }
         
