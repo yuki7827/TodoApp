@@ -66,7 +66,6 @@
         <!--カレンダー-->
         <scene sceneID="mtn-vD-9sJ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uPr-lX-nxe" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="カレンダー" id="jVK-b8-liA" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bO4-7G-bCy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -92,6 +91,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="カレンダー" image="calendar-7.png" landscapeImage="calendar-7.png" largeContentSizeImage="calendar-7.png" selectedImage="calendar-7.png" id="YbL-O5-O4r"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uPr-lX-nxe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1080" y="864.08450704225356"/>
         </scene>
@@ -137,7 +137,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M4H-wR-aVz">
-                                <rect key="frame" x="60.5" y="269" width="200" height="30"/>
+                                <rect key="frame" x="60.5" y="195" width="200" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="mRd-2C-YlF"/>
                                     <constraint firstAttribute="width" constant="200" id="oVO-MT-ori"/>
@@ -147,14 +147,14 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H9R-UU-Hbj">
-                                <rect key="frame" x="145" y="339" width="31" height="30"/>
+                                <rect key="frame" x="145" y="265" width="31" height="30"/>
                                 <state key="normal" title="追加"/>
                                 <connections>
                                     <action selector="TodoAddButton:" destination="ycu-Sh-L16" eventType="touchUpInside" id="WUH-PR-qoK"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gX9-WU-f8C">
-                                <rect key="frame" x="0.0" y="177" width="320" height="21"/>
+                                <rect key="frame" x="0.0" y="144" width="320" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="PEY-CR-rss"/>
                                 </constraints>
@@ -166,12 +166,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gX9-WU-f8C" firstAttribute="trailing" secondItem="Zfg-f0-KHe" secondAttribute="trailing" id="2tv-Oo-VxR"/>
+                            <constraint firstItem="gX9-WU-f8C" firstAttribute="top" secondItem="Zfg-f0-KHe" secondAttribute="top" constant="80" id="7t2-ZU-gTH"/>
                             <constraint firstItem="M4H-wR-aVz" firstAttribute="centerX" secondItem="mXL-30-G06" secondAttribute="centerX" id="BIG-YN-bSh"/>
                             <constraint firstItem="gX9-WU-f8C" firstAttribute="leading" secondItem="Zfg-f0-KHe" secondAttribute="leading" id="THO-Jj-FJB"/>
-                            <constraint firstItem="M4H-wR-aVz" firstAttribute="top" secondItem="gX9-WU-f8C" secondAttribute="bottom" constant="71" id="bwi-VB-Smc"/>
                             <constraint firstItem="H9R-UU-Hbj" firstAttribute="centerX" secondItem="mXL-30-G06" secondAttribute="centerX" id="fYP-WW-m0r"/>
-                            <constraint firstItem="M4H-wR-aVz" firstAttribute="centerY" secondItem="mXL-30-G06" secondAttribute="centerY" id="ibm-AC-EQO"/>
                             <constraint firstItem="H9R-UU-Hbj" firstAttribute="top" secondItem="M4H-wR-aVz" secondAttribute="bottom" constant="40" id="nlW-h0-tnC"/>
+                            <constraint firstItem="M4H-wR-aVz" firstAttribute="top" secondItem="gX9-WU-f8C" secondAttribute="bottom" constant="30" id="xNh-Er-x6P"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Zfg-f0-KHe"/>
                     </view>
