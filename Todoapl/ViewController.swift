@@ -93,6 +93,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         tableView.isEditing = editing //editingはBool型でeditButtonに依存する変数
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         //dataを消してから
         //        TodoKobetsunonakami.remove(at: indexPath.row)
