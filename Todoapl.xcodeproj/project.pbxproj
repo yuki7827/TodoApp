@@ -20,6 +20,7 @@
 		18C97E92212DBFCE00934107 /* TodoaplUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C97E91212DBFCE00934107 /* TodoaplUITests.swift */; };
 		18C97EA0212DCFB800934107 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C97E9F212DCFB800934107 /* AddViewController.swift */; };
 		18DF9FB3214F77E70024D140 /* file-tick-7.png in Resources */ = {isa = PBXBuildFile; fileRef = 18DF9FB2214F77E70024D140 /* file-tick-7.png */; };
+		18ECB2D82169B44C0072FF91 /* DidViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ECB2D72169B44C0072FF91 /* DidViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		18C97E93212DBFCE00934107 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18C97E9F212DCFB800934107 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		18DF9FB2214F77E70024D140 /* file-tick-7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "file-tick-7.png"; sourceTree = "<group>"; };
+		18ECB2D72169B44C0072FF91 /* DidViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DidViewController.swift; sourceTree = "<group>"; };
 		43CD858F79653A98F61C1C60 /* Pods-Todoapl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoapl.release.xcconfig"; path = "Pods/Target Support Files/Pods-Todoapl/Pods-Todoapl.release.xcconfig"; sourceTree = "<group>"; };
 		44827C7DF8ACF7E5FD81FA37 /* Pods-Todoapl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todoapl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Todoapl/Pods-Todoapl.debug.xcconfig"; sourceTree = "<group>"; };
 		B46A5533717CACBDCFE52970 /* Pods_Todoapl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todoapl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +127,7 @@
 				185B2792213AC1410057CBC4 /* file-two-7.png */,
 				18DF9FB2214F77E70024D140 /* file-tick-7.png */,
 				185B2794213AC1B80057CBC4 /* calendar-7.png */,
+				18ECB2D72169B44C0072FF91 /* DidViewController.swift */,
 			);
 			path = Todoapl;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18ECB2D82169B44C0072FF91 /* DidViewController.swift in Sources */,
 				18C97EA0212DCFB800934107 /* AddViewController.swift in Sources */,
 				18C97E74212DBFC700934107 /* ViewController.swift in Sources */,
 				18C97E72212DBFC700934107 /* AppDelegate.swift in Sources */,

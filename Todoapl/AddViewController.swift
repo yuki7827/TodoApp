@@ -11,6 +11,7 @@ import UIKit
 //Todoの配列
 var todo =  ["title":"", "memo":"", "dateTime": Date()] as [String : Any]
 var todoList = [[String:Any]]()
+var didList = [[String:Any]]()
 
 class AddViewController: UIViewController {
     

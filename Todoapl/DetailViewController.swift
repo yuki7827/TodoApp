@@ -29,6 +29,8 @@ class DetailViewController: FormViewController {
 //    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        let rightButton: UIBarButtonItem = UIBarButtonItem(title: "完了", style: .plain, target: self, action: Selector("rightButtonTapped"))
+        self.navigationItem.setRightBarButton(rightButton, animated: true)
 
         //フォーム作成
         form
@@ -129,7 +131,15 @@ class DetailViewController: FormViewController {
     }
     
 
-    
+    @objc func rightButtonTapped(){
+        didList.append(todoList[index!])
+        todoList.remove(at: index!)
+        UserDefaults.standard.set( todoList, forKey: "todoList" )
+        UserDefaults.standard.set( didList, forKey: "DidList" )
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+
 
     /*
     // MARK: - Navigation
