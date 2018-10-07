@@ -39,8 +39,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             //            detailVC.detailMemo = memo[indexPath.row]
             //            detailVC.detailDateTime = datetime[indexPath.row]
             detailVC.detailTodo = todoList[indexPath.row]
-            
             detailVC.index = indexPath.row
+            detailVC.isFinished = false
         }
     }
     //最初からあるコード
@@ -97,6 +97,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         tableView.reloadData()
     }
     
+    //削除
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         //dataを消してから
         //        TodoKobetsunonakami.remove(at: indexPath.row)

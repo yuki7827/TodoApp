@@ -26,7 +26,23 @@ class DidViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
         return didCell
     }
     
-
+    //セルをタップした際に画面遷移をする
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "DidToDetail", sender: indexPath)
+    }
+    
+    //次のViewControllerに値を渡す
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detailVC = segue.destination as? DetailViewController,
+            let indexPath = sender as? IndexPath {
+            //            detailVC.detailMessage = TodoKobetsunonakami[indexPath.row]
+            //            detailVC.detailMemo = memo[indexPath.row]
+            //            detailVC.detailDateTime = datetime[indexPath.row]
+            detailVC.detailTodo = didList[indexPath.row]
+            detailVC.index = indexPath.row
+            detailVC.isFinished = true
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

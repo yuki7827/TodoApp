@@ -103,6 +103,7 @@
                     <navigationItem key="navigationItem" title="完了済み画面" id="KB3-8g-GIX"/>
                     <connections>
                         <outlet property="tableView" destination="QLK-0e-nza" id="1oM-90-IVq"/>
+                        <segue destination="cvE-e1-Is6" kind="show" identifier="DidToDetail" id="viw-fa-Izp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DXo-NG-1Sz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -293,6 +294,8 @@
         <image name="file-two-7.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="jhx-KY-EDI"/>
+        <segue reference="viw-fa-Izp"/>
         <segue reference="ohf-Nb-rQE"/>
     </inferredMetricsTieBreakers>
 </document>

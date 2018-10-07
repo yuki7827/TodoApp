@@ -19,6 +19,7 @@ class DetailViewController: FormViewController {
 //    var detailDateTime: Date?
     var detailTodo: [String:Any]?
     var index: Int?
+    var isFinished: Bool?
 //
 //    @IBAction func deleteButtonTapped(_ sender: Any) {
 //        if let indexPath = index {
@@ -29,8 +30,16 @@ class DetailViewController: FormViewController {
 //    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        let rightButton: UIBarButtonItem = UIBarButtonItem(title: "完了", style: .plain, target: self, action: Selector("rightButtonTapped"))
-        self.navigationItem.setRightBarButton(rightButton, animated: true)
+        if let isFin = isFinished {
+            if isFin {
+                let rightButton: UIBarButtonItem = UIBarButtonItem(title: "未完了", style: .plain, target: self, action: Selector("NoFinishButtonTapped"))
+                self.navigationItem.setRightBarButton(rightButton, animated: true)
+
+            } else {
+                let rightButton: UIBarButtonItem = UIBarButtonItem(title: "完了", style: .plain, target: self, action: Selector("FinishButtonTapped"))
+                self.navigationItem.setRightBarButton(rightButton, animated: true)
+            }
+        }
 
         //フォーム作成
         form
@@ -131,12 +140,19 @@ class DetailViewController: FormViewController {
     }
     
 
-    @objc func rightButtonTapped(){
+    @objc func FinishButtonTapped(){
         didList.append(todoList[index!])
         todoList.remove(at: index!)
         UserDefaults.standard.set( todoList, forKey: "todoList" )
         UserDefaults.standard.set( didList, forKey: "DidList" )
-        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func NoFinishButtonTapped(){
+        todoList.append(didList[index!])
+        didList.remove(at: index!)
+        UserDefaults.standard.set( todoList, forKey: "todoList" )
+        UserDefaults.standard.set( didList, forKey: "DidList" )
         self.navigationController?.popViewController(animated: true)
     }
 
