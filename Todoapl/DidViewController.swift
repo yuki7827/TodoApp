@@ -47,7 +47,7 @@ class DidViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let didListDB = UserDefaults.standard.object(forKey: "DidList") {
+        if let didListDB = UserDefaults.standard.object(forKey: "didList") {
             didList = didListDB as! [[String:Any]]
         }
         
@@ -62,6 +62,30 @@ class DidViewController: UIViewController,UITableViewDelegate,UITableViewDataSou
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
+    }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        //override前の処理を継続してさせる
+        super.setEditing(editing, animated: animated)
+        //tableViewの編集モードを切り替える
+        tableView.isEditing = editing //editingはBool型でeditButtonに依存する変数
+    }
+    
+    //削除
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        //dataを消してから
+        //        TodoKobetsunonakami.remove(at: indexPath.row)
+        //        memo.remove(at: indexPath.row)
+        //        datetime.remove(at: indexPath.row)
+        didList.remove(at: indexPath.row)
+        //        UserDefaults.standard.set( TodoKobetsunonakami, forKey: "TodoList" )
+        //        UserDefaults.standard.set( memo, forKey: "memoList" )
+        //        UserDefaults.standard.set( datetime, forKey: "dateTimeList" )
+        UserDefaults.standard.set( didList, forKey: "didList" )
+        
+        
+        //tableViewCellの削除
+        tableView.deleteRows(at: [indexPath], with: .automatic)
     }
 
     /*

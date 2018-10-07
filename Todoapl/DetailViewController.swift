@@ -55,16 +55,17 @@ class DetailViewController: FormViewController {
                     }
                     //変数に入力内容を入れる
                     if let index = self.index,
-                    let rowValue = value {
-                        todoList[index]["title"] = rowValue
-                        
-                        //変数の中身をUDに追加
-                        UserDefaults.standard.set( todoList, forKey: "todoList" )
-                        
+                        let rowValue = value {
+                        if self.isFinished! {
+                            didList[index]["title"] = rowValue
+                            //変数の中身をUDに追加
+                            UserDefaults.standard.set( didList, forKey: "didList" )
+                        } else {
+                            todoList[index]["title"] = rowValue
+                            //変数の中身をUDに追加
+                            UserDefaults.standard.set( todoList, forKey: "todoList" )
+                        }
                     }
-
-
-                    
                 }
             <<< TextAreaRow {row in
                 row.placeholder = "メモを入力"
@@ -78,9 +79,15 @@ class DetailViewController: FormViewController {
                     //変数に入力内容を入れる
                     if let index = self.index,
                         let rowValue = value {
-                        todoList[index]["memo"] = rowValue
-                        //変数の中身をUDに追加
-                        UserDefaults.standard.set( todoList, forKey: "todoList" )
+                        if self.isFinished! {
+                            didList[index]["memo"] = rowValue
+                            //変数の中身をUDに追加
+                            UserDefaults.standard.set( didList, forKey: "didList" )
+                        } else {
+                            todoList[index]["memo"] = rowValue
+                            //変数の中身をUDに追加
+                            UserDefaults.standard.set( todoList, forKey: "todoList" )
+                        }
                     }
             }
 //            // ここからセクション2のコード
@@ -100,9 +107,15 @@ class DetailViewController: FormViewController {
                     //変数に入力内容を入れる
                     if let index = self.index,
                         let rowValue = value {
-                        todoList[index]["dateTime"] = rowValue
-                        //変数の中身をUDに追加
-                        UserDefaults.standard.set( todoList, forKey: "todoList" )
+                        if self.isFinished! {
+                            didList[index]["dateTime"] = rowValue
+                            //変数の中身をUDに追加
+                            UserDefaults.standard.set( didList, forKey: "didList" )
+                        } else {
+                            todoList[index]["dateTime"] = rowValue
+                            //変数の中身をUDに追加
+                            UserDefaults.standard.set( todoList, forKey: "todoList" )
+                        }
                     }
                     // 通知内容の設定
                     let content = UNMutableNotificationContent()
@@ -122,7 +135,7 @@ class DetailViewController: FormViewController {
                     // 通知を登録
                     ViewController.center.add(request) { (error : Error?) in
                         if error != nil {
-                            print("erroe")
+                            print("error")
                         }
                     }
         }
@@ -144,7 +157,7 @@ class DetailViewController: FormViewController {
         didList.append(todoList[index!])
         todoList.remove(at: index!)
         UserDefaults.standard.set( todoList, forKey: "todoList" )
-        UserDefaults.standard.set( didList, forKey: "DidList" )
+        UserDefaults.standard.set( didList, forKey: "didList" )
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -152,7 +165,7 @@ class DetailViewController: FormViewController {
         todoList.append(didList[index!])
         didList.remove(at: index!)
         UserDefaults.standard.set( todoList, forKey: "todoList" )
-        UserDefaults.standard.set( didList, forKey: "DidList" )
+        UserDefaults.standard.set( didList, forKey: "didList" )
         self.navigationController?.popViewController(animated: true)
     }
 
