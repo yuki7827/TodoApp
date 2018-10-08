@@ -78,7 +78,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         self.navigationController?.isNavigationBarHidden = false
         navigationItem.title = "一覧画面"
-        navigationItem.leftBarButtonItem = editButtonItem
+        //navigationItem.leftBarButtonItem = editButtonItem
     }
     
     //最初からあるコード
@@ -97,20 +97,39 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         tableView.reloadData()
     }
     
-    //削除
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        //dataを消してから
-        //        TodoKobetsunonakami.remove(at: indexPath.row)
-        //        memo.remove(at: indexPath.row)
-        //        datetime.remove(at: indexPath.row)
+    // Cellのスワイプ処理
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let swipeCellToDelete = UITableViewRowAction(style: .default, title: "削除") { action, index in
+            self.swipeDelete(indexPath: indexPath)// 押されたときの動きを定義しています
+        }
+        let swipeCellToFinish = UITableViewRowAction(style: .default, title: "完了") { action, index in
+            self.swipeFinish(index: index.row, indexPath: indexPath)
+        }
+
+        // 背景色
+        swipeCellToDelete.backgroundColor = .red
+        swipeCellToFinish.backgroundColor = .blue
+        // 配列の右から順で表示される
+        return [swipeCellToFinish, swipeCellToDelete]
+    }
+    
+    // trueを返すことでCellのアクションを許可
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    // スワイプされたとき用のメソッド
+    func swipeDelete(indexPath: IndexPath) {
         todoList.remove(at: indexPath.row)
-        //        UserDefaults.standard.set( TodoKobetsunonakami, forKey: "TodoList" )
-        //        UserDefaults.standard.set( memo, forKey: "memoList" )
-        //        UserDefaults.standard.set( datetime, forKey: "dateTimeList" )
         UserDefaults.standard.set( todoList, forKey: "todoList" )
-        
-        
-        //tableViewCellの削除
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+    }
+    
+    func swipeFinish(index: Int, indexPath: IndexPath) {
+        didList.append(todoList[index])
+        todoList.remove(at: index)
+        UserDefaults.standard.set( todoList, forKey: "todoList" )
+        UserDefaults.standard.set( didList, forKey: "didList" )
         tableView.deleteRows(at: [indexPath], with: .automatic)
     }
     
