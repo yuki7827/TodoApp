@@ -1,10 +1,8 @@
 //  ViewController.swift
 import UIKit
-import UserNotifications
 
 //classの継承を追加
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
-    static let center = UNUserNotificationCenter.current()
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -52,29 +50,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             //            datetime = UserDefaults.standard.object(forKey: "DateTimeList") as! [Date]
             todoList = UserDefaults.standard.object(forKey: "todoList") as! [[String:Any]]
         }
-        // 通知許可ダイアログを表示
-        ViewController.center.requestAuthorization(options: [.alert, .sound, .badge]) {
-            (granted, error) in
-            // エラー処理
-        }
-        
-        // 通知内容の設定
-        let content = UNMutableNotificationContent()
-        
-        content.title = NSString.localizedUserNotificationString(forKey: "Title", arguments: nil)
-        content.body = NSString.localizedUserNotificationString(forKey: "Message", arguments: nil)
-        content.sound = UNNotificationSound.default()
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        
-        let request = UNNotificationRequest(identifier: " Identifier", content: content, trigger: trigger)
-        
-        // 通知を登録
-        ViewController.center.add(request) { (error : Error?) in
-            if error != nil {
-                // エラー処理
-            }
-        }
+        NotificationUtil.viewNotificationDialog()
+        NotificationUtil.testNotificationSetting()
         
         self.navigationController?.isNavigationBarHidden = false
         navigationItem.title = "一覧画面"
@@ -123,6 +100,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         todoList.remove(at: indexPath.row)
         UserDefaults.standard.set( todoList, forKey: "todoList" )
         tableView.deleteRows(at: [indexPath], with: .automatic)
+        todoList.reverse()
+
     }
     
     func swipeFinish(index: Int, indexPath: IndexPath) {
