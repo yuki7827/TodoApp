@@ -20,6 +20,7 @@ class DetailViewController: FormViewController {
     var detailTodo: [String:Any]?
     var index: Int?
     var isFinished: Bool?
+    var isNotification = true
     //
     //    @IBAction func deleteButtonTapped(_ sender: Any) {
     //        if let indexPath = index {
@@ -39,6 +40,7 @@ class DetailViewController: FormViewController {
                 let rightButton: UIBarButtonItem = UIBarButtonItem(title: "完了", style: .plain, target: self, action: Selector("FinishButtonTapped"))
                 self.navigationItem.setRightBarButton(rightButton, animated: true)
             }
+            isNotification = detailTodo?["isNotification"] as? Bool ?? true
         }
         
         //フォーム作成
@@ -65,6 +67,7 @@ class DetailViewController: FormViewController {
                             //変数の中身をUDに追加
                             UserDefaults.standard.set( todoList, forKey: "todoList" )
                         }
+                        self.detailTodo?["title"] = value
                     }
             }
             <<< TextAreaRow {row in
@@ -88,6 +91,7 @@ class DetailViewController: FormViewController {
                             //変数の中身をUDに追加
                             UserDefaults.standard.set( todoList, forKey: "todoList" )
                         }
+                        self.detailTodo?["memo"] = value
                     }
             }
             //            // ここからセクション2のコード
@@ -116,24 +120,74 @@ class DetailViewController: FormViewController {
                             //変数の中身をUDに追加
                             UserDefaults.standard.set( todoList, forKey: "todoList" )
                         }
+                        self.detailTodo?["dateTime"] = value
                     }
-                    NotificationUtil.notificationSetting(title: self.detailTodo!["title"] as! String, body: self.detailTodo!["memo"] as! String, fromDate: value!)
+                    let notification = self.detailTodo?["notification"] as? String ?? "0分前"
+                    var splitArray = notification.components(separatedBy: "分前")
+
+                    if self.isNotification {
+                        NotificationUtil.notificationSetting(title: self.detailTodo!["title"] as! String, body: self.detailTodo!["memo"] as! String, fromDate: value!, addTime: (Int)(splitArray[0]) ?? 0 )
+                    }
             }
             <<< PushRow<String> {row in
                 row.title = "通知"
                 row.options = ["0分前","1分前","3分前","5分前","10分前","15分前","20分前","30分前"]
-                row.value = "0分前"
+                row.value = detailTodo?["notification"] as? String
                 }.onChange { row in
-                    let value = row.value
-                    if let printValue = value {
-                        print(printValue)
+                    if let index = self.index {
+                        let value = row.value
+                        if self.isFinished! {
+                            didList[index]["notification"] = value
+                            //変数の中身をUDに追加
+                            UserDefaults.standard.set( didList, forKey: "didList" )
+                        } else {
+                            todoList[index]["notification"] = value
+                            //変数の中身をUDに追加
+                            UserDefaults.standard.set( todoList, forKey: "todoList" )
+                        }
+                        self.detailTodo?["notification"] = value
+
+                        if let printValue = value {
+                            print(printValue)
+                        }
+                        var splitArray = value!.components(separatedBy: "分前")
+                        
+                        if self.isNotification {
+                            NotificationUtil.notificationSetting(title: self.detailTodo!["title"] as! String, body: self.detailTodo!["memo"] as! String, fromDate: self.detailTodo!["dateTime"] as! Date, addTime: (Int)(splitArray[0]) ?? 0 )
+                        }
                     }
-                    var splitArray = value!.components(separatedBy: "分前")
-                    let addTime = (Int)(splitArray[0]) ?? 0
-                    
-                    NotificationUtil.notificationSetting(title: self.detailTodo!["title"] as! String, body: self.detailTodo!["memo"] as! String, fromDate: self.detailTodo!["dateTime"] as! Date, addTime: addTime )
-        }
+            }
         
+            <<< SwitchRow(){ row in
+                row.title = "通知ON/OFF"
+                row.value = detailTodo?["isNotification"] as? Bool
+                }.onChange{[unowned self] row in
+                    if let index = self.index {
+                        let value = row.value
+                        if self.isFinished! {
+                            didList[index]["isNotification"] = value
+                            self.isNotification = value!
+                            //変数の中身をUDに追加
+                            UserDefaults.standard.set( didList, forKey: "didList" )
+                        } else {
+                            todoList[index]["isNotification"] = value
+                            self.isNotification = value!
+
+                            //変数の中身をUDに追加
+                            UserDefaults.standard.set( todoList, forKey: "todoList" )
+                        }
+                        self.detailTodo?["isNotification"] = value
+                        print(value!)
+                        let notification = self.detailTodo?["notification"] as? String ?? "0分前"
+                        var splitArray = notification.components(separatedBy: "分前")
+                        if self.isNotification {
+                            NotificationUtil.notificationSetting(title: self.detailTodo!["title"] as! String, body: self.detailTodo!["memo"] as! String, fromDate: self.detailTodo!["dateTime"] as! Date, addTime: (Int)(splitArray[0]) ?? 0  )
+                        } else {
+                            NotificationUtil.deleteNotification(identifier: self.detailTodo!["title"] as! String)
+                        }
+                    }
+        }
+
         // Do any additional setup after loading the view.
         //detailLabel.text = detailMessage
     }

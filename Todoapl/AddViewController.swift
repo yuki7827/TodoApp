@@ -36,6 +36,10 @@ class AddViewController: UIViewController {
         todo.updateValue(TodoTextField.text!, forKey: "title")
         todo.updateValue("", forKey: "memo")
         todo.updateValue(Date(), forKey: "dateTime")
+        todo.updateValue(true, forKey: "isNotification")
+        todo.updateValue("0分前", forKey: "notification")
+
+
         todoList.append(todo)
         //追加ボタンを押したらフィールドを空にする
         TodoTextField.text = ""

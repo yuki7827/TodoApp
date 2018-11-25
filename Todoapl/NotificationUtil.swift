@@ -65,10 +65,15 @@ class NotificationUtil {
         let request = UNNotificationRequest(identifier: title, content: content, trigger: trigger)
         
         // 通知を登録
+        print("\(title)を登録、\(date)")
         center.add(request) { (error : Error?) in
             if error != nil {
-                print("error")
+                print("\(title)の登録失敗")
             }
         }
+    }
+    static func deleteNotification(identifier: String) {
+        self.center.removePendingNotificationRequests(withIdentifiers: [identifier])
+        print("\(identifier)を削除")
     }
 }
