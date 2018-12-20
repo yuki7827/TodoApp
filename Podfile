@@ -12,4 +12,7 @@ target 'Todoapl' do
 
     # Pods for WorkTimeManager
   pod 'FSCalendar', :git=> 'https://github.com/WenchaoD/FSCalendar'
+
+  # Pods for CalculateCalendarLogicSample
+  pod 'CalculateCalendarLogic'
 end

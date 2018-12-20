@@ -1,13 +1,16 @@
 PODS:
+  - CalculateCalendarLogic (0.2.0)
   - Eureka (4.2.0)
   - FSCalendar (2.8.0)
 
 DEPENDENCIES:
+  - CalculateCalendarLogic
   - Eureka
   - FSCalendar (from `https://github.com/WenchaoD/FSCalendar`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - CalculateCalendarLogic
     - Eureka
 
 EXTERNAL SOURCES:
@@ -20,9 +23,10 @@ CHECKOUT OPTIONS:
     :git: https://github.com/WenchaoD/FSCalendar
 
 SPEC CHECKSUMS:
+  CalculateCalendarLogic: d7b6bf4ed6c0c21937efb7323c67d09cdb12a1ad
   Eureka: 0748c7bbb2560130e43c7bfa83e99c98854a1f42
   FSCalendar: 3a5ed3636e2ba1b83ebebfcf0c2603105a6f5efe
 
-PODFILE CHECKSUM: 790b631dedf126d5542940cc5a5d286f36f5ddff
+PODFILE CHECKSUM: 5d978ff9c7b9bf17165d874d59e29221d9fdcea1
 
 COCOAPODS: 1.5.3
