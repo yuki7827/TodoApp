@@ -9,4 +9,7 @@ target 'Todoapl' do
  
   # Pods for EurekaSample
   pod 'Eureka'
+
+    # Pods for WorkTimeManager
+  pod 'FSCalendar', :git=> 'https://github.com/WenchaoD/FSCalendar'
 end
