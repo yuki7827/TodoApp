@@ -8,10 +8,12 @@ import UIKit
 //日時
 //var datetime = [Date]()
 
+// TODO: グローバル変数を別クラスに定義
 //Todoの配列
 var todo =  ["title":"", "memo":"", "dateTime": Date()] as [String : Any]
 var todoList = [[String:Any]]()
 var didList = [[String:Any]]()
+var selectedDate = Date()
 
 class AddViewController: UIViewController {
     

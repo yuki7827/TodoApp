@@ -55,7 +55,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="tableView" destination="iNh-qO-JGM" id="i43-J5-myv"/>
+                        <outlet property="tableView" destination="iNh-qO-JGM" id="i95-Ff-IcM"/>
                         <segue destination="cvE-e1-Is6" kind="show" identifier="MainToDetail" id="E4u-Ci-9HF"/>
                     </connections>
                 </viewController>
@@ -146,17 +146,43 @@
                                     <outlet property="delegate" destination="jVK-b8-liA" id="Nig-Ne-kA5"/>
                                 </connections>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PBu-GK-EaH">
+                                <rect key="frame" x="0.0" y="264" width="320" height="255"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CalendarTodoCell" id="jpV-ux-nWq">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jpV-ux-nWq" id="YAx-U2-rw8">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="jVK-b8-liA" id="vBl-W6-UOw"/>
+                                    <outlet property="delegate" destination="jVK-b8-liA" id="0Ry-ay-khB"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="2m5-Wa-GX1" firstAttribute="bottom" secondItem="PBu-GK-EaH" secondAttribute="bottom" id="1iT-Ke-pS1"/>
                             <constraint firstItem="Qvb-KK-9Qo" firstAttribute="leading" secondItem="2m5-Wa-GX1" secondAttribute="leading" id="9T0-Ey-Jsn"/>
+                            <constraint firstItem="PBu-GK-EaH" firstAttribute="top" secondItem="Qvb-KK-9Qo" secondAttribute="bottom" id="AlB-bT-F1z"/>
+                            <constraint firstItem="PBu-GK-EaH" firstAttribute="leading" secondItem="2m5-Wa-GX1" secondAttribute="leading" id="fzg-Vo-PDk"/>
                             <constraint firstItem="2m5-Wa-GX1" firstAttribute="trailing" secondItem="Qvb-KK-9Qo" secondAttribute="trailing" id="oQr-2C-mpp"/>
+                            <constraint firstItem="PBu-GK-EaH" firstAttribute="trailing" secondItem="2m5-Wa-GX1" secondAttribute="trailing" id="tpt-a1-q30"/>
                             <constraint firstItem="Qvb-KK-9Qo" firstAttribute="top" secondItem="2m5-Wa-GX1" secondAttribute="top" id="wm8-Nj-aqi"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2m5-Wa-GX1"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="カレンダー" image="calendar-7.png" landscapeImage="calendar-7.png" largeContentSizeImage="calendar-7.png" selectedImage="calendar-7.png" id="YbL-O5-O4r"/>
                     <navigationItem key="navigationItem" title="カレンダー画面" id="pZ1-T2-Ohf"/>
+                    <connections>
+                        <outlet property="tableView" destination="PBu-GK-EaH" id="Xlw-Xi-yUX"/>
+                        <segue destination="cvE-e1-Is6" kind="show" identifier="CalendarToDetail" id="6lF-04-w6T"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uPr-lX-nxe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -296,7 +322,8 @@
         <image name="file-two-7.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="viw-fa-Izp"/>
+        <segue reference="jhx-KY-EDI"/>
+        <segue reference="E4u-Ci-9HF"/>
         <segue reference="ohf-Nb-rQE"/>
     </inferredMetricsTieBreakers>
 </document>

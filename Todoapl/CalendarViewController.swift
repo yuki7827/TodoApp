@@ -3,12 +3,92 @@ import FSCalendar
 import CalculateCalendarLogic
 
 
-class CalendarViewController: UIViewController,FSCalendarDataSource,FSCalendarDelegate,FSCalendarDelegateAppearance {
+class CalendarViewController: UIViewController,FSCalendarDataSource,FSCalendarDelegate,FSCalendarDelegateAppearance, UITableViewDelegate,UITableViewDataSource {
+    
+    @IBOutlet weak var tableView: UITableView!
+
+    //UITableView、numberOfRowsInSectionの追加(表示するcell数を決める)
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var parsedTodoDict = parseDateTimeTodoList(TodoList: todoList)
+        var sectionArray = createSectionTitleArray(TodoList: todoList)
+        let thisSectionTodoList = parsedTodoDict[sectionArray[section]] as? Array<[String:Any]>
+        //戻り値の設定(表示するcell数)
+        return thisSectionTodoList?.count ?? 0
+    }
+    
+    //UITableView、cellForRowAtの追加(表示するcellの中身を決める)
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //変数を作る
+        let TodoCell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "CalendarTodoCell", for: indexPath)
+        var parsedTodoDict = parseDateTimeTodoList(TodoList: todoList)
+        var sectionArray = createSectionTitleArray(TodoList: todoList)
+        let thisSectionTodoList = parsedTodoDict[sectionArray[indexPath.section]] as? Array<[String:Any]>
+        //変数の中身を作る
+        TodoCell.textLabel!.text = thisSectionTodoList?[indexPath.row]["title"] as? String
+        
+        //戻り値の設定（表示する中身)
+        return TodoCell
+    }
+    
+    //セルをタップした際に画面遷移をする
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "CalendarToDetail", sender: indexPath)
+    }
+    
+    //次のViewControllerに値を渡す
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let detailVC = segue.destination as? DetailViewController,
+            let indexPath = sender as? IndexPath {
+            //            detailVC.detailMessage = TodoKobetsunonakami[indexPath.row]
+            //            detailVC.detailMemo = memo[indexPath.row]
+            //            detailVC.detailDateTime = datetime[indexPath.row]
+            var parsedTodoDict = parseDateTimeTodoList(TodoList: todoList)
+            var sectionArray = createSectionTitleArray(TodoList: todoList)
+            let thisSectionTodoList = parsedTodoDict[sectionArray[indexPath.section]] as? Array<[String:Any]>
+            let todo = thisSectionTodoList?[indexPath.row]
+            for (index,info) in todoList.enumerated() {
+                if let todoTitle = todo?["title"] as? String,
+                    let infoTitle = info["title"] as? String,
+                     todoTitle == infoTitle  {
+                    detailVC.index = index
+                    break
+                }
+            }
+            detailVC.detailTodo = todo
+            detailVC.isFinished = false
+        }
+    }
+    // カレンダータップ時に日付情報を取得する
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        selectedDate = date
+        tableView.reloadData()
+
+
+//        let year = tmpDate.component(.year, from: date)
+//        let month = tmpDate.component(.month, from: date)
+//        let day = tmpDate.component(.day, from: date)
+//        print("\(year)/\(month)/\(day)")
+    }
+
+    // Section数
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return createSectionTitleArray(TodoList: todoList).count
+    }
+    
+    // Sectionのタイトル
+    func tableView(_ tableView: UITableView,
+                   titleForHeaderInSection section: Int) -> String? {
+        return createSectionTitleArray(TodoList: todoList)[section]
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -71,5 +151,47 @@ class CalendarViewController: UIViewController,FSCalendarDataSource,FSCalendarDe
         
         return nil
     }
+    
+    // TodoListの期日をセクションタイトル用に配列に格納する
+    private func createSectionTitleArray(TodoList: Array<[String:Any]>) -> [String] {
+        var sectionTitleArray: [String] = []
+        let f = DateFormatter()
+        f.timeStyle = .none
+        f.dateStyle = .full
+        f.locale = Locale(identifier: "ja_JP")
+        for todo in TodoList {
+            if let dateTime = todo["dateTime"] as? Date {
+                let strDateTime = f.string(from: dateTime)
+                if !sectionTitleArray.contains(strDateTime) && selectedDate > dateTime {
+                    sectionTitleArray.append(strDateTime)
+                }
+            }
+        }
+        sectionTitleArray.sort(by: {$0 < $1})
+        return sectionTitleArray
+    }
+    
+    // Todoを期日ごとに分ける
+    private func parseDateTimeTodoList(TodoList: Array<[String:Any]>) -> [String:Any] {
+        var parsedDict: [String:Any]  = [:]
+        let f = DateFormatter()
+        f.timeStyle = .none
+        f.dateStyle = .full
+        f.locale = Locale(identifier: "ja_JP")
+        for todo in TodoList {
+            var tmpArray: Array<[String:Any]> = []
+            if let dateTime = todo["dateTime"] as? Date {
+                let strDateTime = f.string(from: dateTime)
+                if !parsedDict.keys.contains(strDateTime) {
+                    parsedDict[strDateTime] = [] as Array<[String:Any]>
+                }
+                tmpArray = parsedDict[strDateTime] as? Array<[String:Any]> ?? []
+                tmpArray.append(todo)
+                parsedDict[strDateTime] = tmpArray
+            }
+        }
+        return parsedDict
+    }
+    
     
 }
